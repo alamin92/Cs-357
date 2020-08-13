@@ -1,0 +1,80 @@
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
+#include <string>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+  string str[100];
+   char file[100];
+   
+   
+   
+   cout<<"Enter some expression in the 'expr.txt' file using following grammer:\n";
+   //cin >> file;
+   cout<<" Grammer:\n <letter>  A|B|C|...|Z|a|b|...|z\n <operator>  +|−|∗|/ \n <digit>   0|1|2|...|8|9 \n <delim>    _ \n <decpt>    .\n";
+
+   
+
+   ifstream fout;
+   
+   
+   fout.open("expr.txt");
+   
+   string expression;
+   getline(fout, expression);
+   
+   cout << "Reading from file: "<< expression << endl;
+   int size=expression.length();
+   
+   for(int i=0 ; i<size ; i++){
+      str[i] = expression[i];
+   }
+      for(int i=0 ; i<size ; i++){
+        
+           if( (str[i]>="0") && (str[i]<="9"))
+           {
+               cout<<str[i] << " is digit\n";  
+           }
+        
+          else if(str[i]== "*" || str[i]=="+" || str[i]   =="/" || str[i]== "=" || str[i]=="-")
+           {
+               cout << str[i] <<" is operator\n";  
+           }
+           
+           
+           else if(str[i]=="_"){
+             cout<<str[i] << " is delimeter\n"; 
+           }
+           else if( (str[i]>="a" && str[i]<="z")||(str[i]>="A" && str[i]<="Z"))
+           {
+             cout<<str[i] << " is letter\n";  
+           }
+           else if (str[i]==".")
+           {
+             cout<<str[i] << " is decpt\n";  
+           }
+           else {
+             cout<<" you did not put correct grammer\n";
+           }
+           //fout.close();
+           int n;
+           cout<<"another one\n";
+           cout<<"how many character want tot pu\n";
+           cin>>n;
+           for(int i=0;i<n;i++){
+             cin>>expression;
+           }
+            for(int i=0; i<n; i++){
+              cout<<expression;
+            }
+            fout.close();
+          
+   
+   
+  
+}
+}
